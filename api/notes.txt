@@ -71,3 +71,5 @@ Text box needs resizing.
 Trash cans should be lighter colour grey.
 
 /Applications/MAMP/htdocs/Tom Lessons/TP_OOP/todo list/frontend/index.html
+
+

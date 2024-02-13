@@ -1,0 +1,10 @@
+Remember!
+
+Github link for this file is:
+https://github.com/JohnUrq/TP_OOP_todo/tree/main/api
+
+MAMP link for DB is:
+http://localhost:8888/phpMyAdmin5/index.php?route=/sql&server=1&db=todo_oop&table=todo_lists&pos=0
+
+Webpage should be at:
+http://localhost:8888/Tom%20Lessons/TP_OOP/todo%20list/TP_OOP_todo/frontend/
