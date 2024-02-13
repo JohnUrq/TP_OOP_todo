@@ -1,0 +1,73 @@
+Models
+View
+Controller
+Assets
+Views
+
+
+1 - what models in app?
+    eg a todo is an entity (nouns)
+    list of todos
+
+    2 models
+    1 - todo
+    2 - list
+
+
+2 - create db connection
+
+
+Can we create a template of the process?
+
+docker example too?
+At what point to add it to github?
+.gitignore file...
+.htaccess file...?
+
+Models:
+
+Models represent the data and business logic of your application.
+Files commonly kept in the Models folder include PHP classes or files that define the data structure, interact with the database, and handle business logic.
+Example: User.php, Product.php, Order.php
+
+Views:
+
+Views are responsible for presenting the data to the user.
+Files in the Views folder contain the HTML markup, CSS styles, and sometimes JavaScript code.
+Example: home.php, profile.php, product_details.php
+
+Controllers:
+
+Controllers handle the communication between models and views. They receive requests, process the data, and determine which views to display.
+Files in the Controllers folder include PHP classes or files that handle the routing and contain methods/functions to respond to user requests.
+Example: HomeController.php, UserController.php, ProductController.php
+
+Assets:
+
+Assets folder is used to store static files such as images, JavaScript libraries, CSS files, and other resources used by the views.
+Files commonly kept in the Assets folder include images (logo.png, background.jpg), CSS files (style.css), JavaScript files (script.js), and other static resources.
+Example: assets/css/style.css, assets/js/script.js, assets/images/logo.png
+
+
+
+
+22/12/23
+1 - added css to space margin in input-box-container
+2 - added font awesome to index.html so can use trash can icons
+  - likewise for the burger menu icon.
+3 - increased size of checkbox using:
+
+    input.default-checkbox {
+    width: 20px;
+    height: 20px;
+    border: solid black;
+    }
+4 - added Second to do list by copying HTML from the first one.
+
+Need to create button to create new list√
+Are we also doing the iphone appearance?
+Checkbox text colour change?
+Text box needs resizing.
+Trash cans should be lighter colour grey.
+
+/Applications/MAMP/htdocs/Tom Lessons/TP_OOP/todo list/frontend/index.html

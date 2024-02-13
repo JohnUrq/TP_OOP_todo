@@ -1,0 +1,90 @@
+#header {
+  background-color: dimgrey;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+body {
+  font-family: Helvetica, sans-serif;
+  display: flex;
+  width: 100vw;
+  /* height: 100vh; */
+  align-items: center;
+  justify-content: center;
+}
+
+.list-title {
+  background-color: rgb(171, 169, 169);
+  color: black;
+  font-weight: bold;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-item {
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.list-item-text {
+  flex: 1;
+}
+
+.input-box {
+  border-width: 1px;
+  border-color: gray;
+  border-radius: 3px;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+}
+
+.input-box-container {
+  padding: 0 10px 10px 10px;
+  /* I've set the margin right to achieve the spacing required on the right side of the input box */
+}
+
+input.default-checkbox {
+  width: 20px;
+  height: 20px;
+  border: solid black;
+}
+
+.submit-button {
+  background-color: dimgrey;
+  color: white;
+  font-weight: bold;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  /* could change the next css to one line? */
+  border-radius: 10px;
+  /* border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px; */
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.list-item .fa-trash,
+.list-title .fa-trash {
+  color: dimgray;
+}
+.container {
+  width: 385px;
+  max-width: 100%;
+  min-width: 300px;
+}
