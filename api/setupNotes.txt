@@ -8,3 +8,5 @@ http://localhost:8888/phpMyAdmin5/index.php?route=/sql&server=1&db=todo_oop&tabl
 
 Webpage should be at:
 http://localhost:8888/Tom%20Lessons/TP_OOP/todo%20list/TP_OOP_todo/frontend/
+
+Do we need a .gitignore file??
