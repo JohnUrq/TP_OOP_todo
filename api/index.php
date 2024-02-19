@@ -7,7 +7,6 @@ $url = str_replace($config['site_url'],'',$_SERVER['REQUEST_URI']);
 
 $url_parts = explode('/',$url);
 
-
 switch($url_parts[0]){
     case 'todos':
         switch($url_parts[1]){
@@ -20,16 +19,15 @@ switch($url_parts[0]){
                 $todo = new Todo;
                 $todo->load($url_parts[2]);
                 $todo->delete();
-                echo "{'result': 'success'}";
+                echo '{"result": "success"}';
                 break;
             case 'create':
                 $todo = new Todo;
                 $properties = ['title', 'list_id', 'date', 'complete'];
-                $todo->hydrate($properties, $_GET);
-
-                $todo->create("title", $properties);
-                 debug($todo);
-                echo "{'result': 'success'}";
+                $todo->hydrate($properties, $_POST);
+var_dump($_POST);
+                $todo->create();
+                 echo '{"result": "success"}';
                 break;
             case 'update':
                 $todo = new Todo;
@@ -41,7 +39,7 @@ switch($url_parts[0]){
                 */
                 $todo->hydrate($properties, $_POST);
                 $todo->update();
-                echo "{'result': 'success'}";
+                echo '{"result": "success"}';
                 break;
 
         }
@@ -59,7 +57,7 @@ switch($url_parts[0]){
                 $todo_list = new TodoList;
                 $todo_list->load($url_parts[2]);
                 $todo_list->delete();
-                echo "{'result': 'success'}";
+                echo '{"result": "success"}';
                 break;    
             case 'create':
                 $todo_list = new TodoList;
@@ -67,7 +65,7 @@ switch($url_parts[0]){
                 $todo_list->hydrate($properties, $_POST);
                 $todo_list->create();
                 // debug($todo_list);
-                echo "{'result': 'success'}";
+                echo '{"result": "success"}';
                 break;
             case 'update':
                 $todo_list = new TodoList;
@@ -76,7 +74,7 @@ switch($url_parts[0]){
                 $todo_list->hydrate($properties, $_POST);
 
                 $todo_list->update();
-                echo "{'result': 'success'}";
+                echo '{"result": "success"}';
                 break;
         }
         break;
