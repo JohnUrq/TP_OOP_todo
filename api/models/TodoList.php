@@ -15,5 +15,8 @@ class TodoList extends Model {
     public $todos;
     public $db_fields = ['title'];
 
-
+    public function index(){
+        $result = query("SELECT * FROM {$this->table}");
+        debug($result);
+    }
 }

@@ -67,27 +67,12 @@
         </div>
         <div class="list-item">
           <div><input type="checkbox"class="default-checkbox"></div>
-          <div class="list-item-text">Get car loan</div>
-          <div><i class="fa-solid fa-trash"></i></div>
-        </div>
-        <div class="list-item">
-          <div><input type="checkbox"class="default-checkbox"></div>
           <div class="list-item-text">Rob bank</div>
           <div><i class="fa-solid fa-trash"></i></div>
         </div>
         <div class="list-item">
           <div><input type="checkbox"class="default-checkbox"></div>
           <div class="list-item-text">Can't get job with criminal record</div>
-          <div><i class="fa-solid fa-trash"></i></div>
-        </div>
-        <div class="list-item">
-          <div><input type="checkbox"class="default-checkbox"></div>
-          <div class="list-item-text">Sell a kidney</div>
-          <div><i class="fa-solid fa-trash"></i></div>
-        </div>
-        <div class="list-item">
-          <div><input type="checkbox"class="default-checkbox"></div>
-          <div class="list-item-text">Sell the dogs kidney</div>
           <div><i class="fa-solid fa-trash"></i></div>
         </div>
         <div class="list-item">
@@ -114,7 +99,7 @@
     document.querySelector(".new-to-do-box").addEventListener("keypress", function(e) {
       if(e.key == "Enter") {
         console.log("Enter pressed")
-        // fetch("http://localhost:8888/Tom%20Lessons/TP_OOP/todo%20list/api/todos/create?title=" + this.value + "&list_id=1")
+        fetch("http://localhost:8888/Tom%20Lessons/TP_OOP/todo%20list/api/todos/create?title=" + this.value + "&list_id=1")
        
       }
     })

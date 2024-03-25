@@ -6,7 +6,7 @@ $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
 
 // create query function as a helper fn to find records and things like that.
-function query($sql, $params){
+function query($sql, $params= []){
 
     global $pdo;
     // debug($sql);

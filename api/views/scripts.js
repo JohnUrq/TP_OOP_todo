@@ -44,8 +44,15 @@ class TodoListAPI {
       input
     );
   }
-  todoUpdate() {
+  todoUpdate(id, input) {
     console.log("Updating todo");
+    this.request(
+      "/todos/update/" + id,
+      function (data) {
+        console.log(data);
+      },
+      input
+    );
   }
   todoListGet(id) {
     console.log("Getting todo list!");
@@ -53,17 +60,31 @@ class TodoListAPI {
       console.log(data);
     });
   }
-  todoListDelete() {
+  todoListDelete(id) {
     console.log("Deleting todo list!");
     this.request("/todo-lists/delete/" + id, function (data) {
       console.log(data);
     });
   }
-  todoListCreate() {
+  todoListCreate(input) {
     console.log("Creating todo list!");
+    this.request(
+      "/todo-lists/create/",
+      function (data) {
+        console.log(data);
+      },
+      input
+    );
   }
-  todoListUpdate() {
+  todoListUpdate(id, input) {
     console.log("Updating todo list!");
+    this.request(
+      "/todo-lists/update/" + id,
+      function (data) {
+        console.log(data);
+      },
+      input
+    );
   }
 }
 

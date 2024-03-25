@@ -53,7 +53,7 @@ class Model {
     public function load($id){
  
         $result = query("SELECT * FROM {$this->table} WHERE id = :id", ['id' => $id]);
-        
+       
         foreach ($result[0] as $key=>$value){
             $this->{$key} = $value;
         }

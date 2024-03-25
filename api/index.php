@@ -3,6 +3,10 @@
 
 include "autoload.php";
 
+if(empty($_POST)){
+    $_POST = json_decode(file_get_contents('php://input'), true);
+}
+
 $url = str_replace($config['site_url'],'',$_SERVER['REQUEST_URI']);
 
 $url_parts = explode('/',$url);
@@ -25,7 +29,6 @@ switch($url_parts[0]){
                 $todo = new Todo;
                 $properties = ['title', 'list_id', 'date', 'complete'];
                 $todo->hydrate($properties, $_POST);
-var_dump($_POST);
                 $todo->create();
                  echo '{"result": "success"}';
                 break;
@@ -48,6 +51,10 @@ var_dump($_POST);
     case 'todo-lists':
         switch($url_parts[1]){
 
+            case 'index':
+                $todo_list = new TodoList;
+                $todo_list->index();
+                break;
             case 'get':
                 $todo_list = new TodoList;
                 $todo_list->load($url_parts[2]);
