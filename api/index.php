@@ -14,6 +14,11 @@ $url_parts = explode('/',$url);
 switch($url_parts[0]){
     case 'todos':
         switch($url_parts[1]){
+            case 'index':
+                $todo = new Todo;
+                $result = $todo->index($url_parts[2]);
+                echo json_encode($result);
+                break;
             case 'get':
                 $todo = new Todo;
                 $todo->load($url_parts[2]);
@@ -53,7 +58,8 @@ switch($url_parts[0]){
 
             case 'index':
                 $todo_list = new TodoList;
-                $todo_list->index();
+                $result = $todo_list->index();
+                echo json_encode($result);
                 break;
             case 'get':
                 $todo_list = new TodoList;

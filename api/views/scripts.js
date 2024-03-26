@@ -22,6 +22,12 @@ class TodoListAPI {
       })
       .then(callback);
   }
+  todoIndex(list_id) {
+    console.log("Getting todo index");
+    this.request("/todos/index/" + list_id, function (data) {
+      console.log(data);
+    });
+  }
   todoGet(id) {
     console.log("Getting todo");
     this.request("/todos/get/" + id, function (data) {
@@ -53,6 +59,12 @@ class TodoListAPI {
       },
       input
     );
+  }
+  todoListIndex() {
+    console.log("Getting todo list index!");
+    this.request("/todo-lists/index/", function (data) {
+      console.log(data);
+    });
   }
   todoListGet(id) {
     console.log("Getting todo list!");
@@ -87,5 +99,12 @@ class TodoListAPI {
     );
   }
 }
-
 const API = new TodoListAPI();
+
+class AppClass {
+  load() {
+    var todo_lists = API.todoListIndex();
+    console.log(todo_lists);
+  }
+}
+const App = new AppClass();

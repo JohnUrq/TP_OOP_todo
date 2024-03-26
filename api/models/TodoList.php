@@ -17,6 +17,14 @@ class TodoList extends Model {
 
     public function index(){
         $result = query("SELECT * FROM {$this->table}");
-        debug($result);
+        $todo_lists =[];
+        foreach ($result as $value) {
+            $todo_lists[] = [
+                "id" => $value->id,
+                "title"=> $value->title
+            ];
+        }
+        // debug($todo_lists);
+        return $todo_lists;
     }
 }
