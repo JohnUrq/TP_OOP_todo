@@ -1,44 +1,53 @@
 <?php
+
 // autoload file to inc other files required
 
-include "autoload.php";
+include 'autoload.php';
 
-if(empty($_POST)){
+if (empty($_POST)) {
     $_POST = json_decode(file_get_contents('php://input'), true);
 }
 
-$url = str_replace($config['site_url'],'',$_SERVER['REQUEST_URI']);
+$url = str_replace($config['site_url'], '', $_SERVER['REQUEST_URI']);
 
-$url_parts = explode('/',$url);
+$url_parts = explode('/', $url);
 
-switch($url_parts[0]){
+switch ($url_parts[0]) {
     case 'todos':
-        switch($url_parts[1]){
+        switch ($url_parts[1]) {
             case 'index':
-                $todo = new Todo;
+                $todo = new Todo();
                 $result = $todo->index($url_parts[2]);
                 echo json_encode($result);
+
                 break;
+
             case 'get':
-                $todo = new Todo;
+                $todo = new Todo();
                 $todo->load($url_parts[2]);
                 echo $todo->json();
+
                 break;
+
             case 'delete':
-                $todo = new Todo;
+                $todo = new Todo();
                 $todo->load($url_parts[2]);
                 $todo->delete();
                 echo '{"result": "success"}';
+
                 break;
+
             case 'create':
-                $todo = new Todo;
+                $todo = new Todo();
                 $properties = ['title', 'list_id', 'date', 'complete'];
                 $todo->hydrate($properties, $_POST);
                 $todo->create();
-                 echo '{"result": "success"}';
+                echo '{"result": "success"}';
+
                 break;
+
             case 'update':
-                $todo = new Todo;
+                $todo = new Todo();
                 $todo->load($url_parts[2]);
                 $properties = ['title', 'list_id', 'date', 'complete'];
                 /*
@@ -48,47 +57,57 @@ switch($url_parts[0]){
                 $todo->hydrate($properties, $_POST);
                 $todo->update();
                 echo '{"result": "success"}';
-                break;
 
+                break;
         }
+
         break;
 
     case 'todo-lists':
-        switch($url_parts[1]){
-
+        switch ($url_parts[1]) {
             case 'index':
-                $todo_list = new TodoList;
+                $todo_list = new TodoList();
                 $result = $todo_list->index();
                 echo json_encode($result);
+
                 break;
+
             case 'get':
-                $todo_list = new TodoList;
+                $todo_list = new TodoList();
                 $todo_list->load($url_parts[2]);
                 echo $todo_list->json();
+
                 break;
+
             case 'delete':
-                $todo_list = new TodoList;
+                $todo_list = new TodoList();
                 $todo_list->load($url_parts[2]);
                 $todo_list->delete();
                 echo '{"result": "success"}';
-                break;    
+
+                break;
+
             case 'create':
-                $todo_list = new TodoList;
+                $todo_list = new TodoList();
                 $properties = ['title'];
                 $todo_list->hydrate($properties, $_POST);
                 $todo_list->create();
                 // debug($todo_list);
-                echo '{"result": "success"}';
+                echo $todo_list->json();
+
                 break;
+
             case 'update':
-                $todo_list = new TodoList;
+                $todo_list = new TodoList();
                 $todo_list->load($url_parts[2]);
                 $properties = ['title'];
                 $todo_list->hydrate($properties, $_POST);
 
                 $todo_list->update();
                 echo '{"result": "success"}';
+
                 break;
         }
+
         break;
 }

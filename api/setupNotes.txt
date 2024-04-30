@@ -10,3 +10,35 @@ Webpage should be at:
 http://localhost:8888/Tom%20Lessons/TP_OOP/todo%20list/TP_OOP_todo/frontend/
 
 Do we need a .gitignore file??
+
+Namespaces? How and when would we integrate these?
+
+Why is github desktop not communicating with git hub?
+
+Can we use laravel with our finished to-do app? How would you go about that?
+
+Do you use homestead or valet?
+
+FK restraint in DB? eg:
+ALTER TABLE `todos`
+ADD CONSTRAINT `fk_todo_list_id`
+FOREIGN KEY (`list_id`)
+REFERENCES `todo_lists` (`id`)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+ NB I've done this in sandbox_test because the list_id doesn't match the auto increment id. Does this matter?
+
+ Foreign Key Considerations:
+If your application involves creating new todos or todo lists, ensure that the logic in your application respects the foreign key constraints. For example, when adding a new todo, make sure it references a valid list_id from todo_lists.
+
+Validation:
+Add validation in your application to ensure that data being inserted into the database is valid. For example, before inserting a new todo, check if the list_id exists in todo_lists.
+
+Error Handling:
+Implement error handling in your application to manage scenarios where data constraints are violated (e.g., trying to insert a todo with a non-existent list_id).
+
+Dynamic Data Handling:
+Ensure that your application dynamically handles list_id values rather than hard-coding them. This could mean having a user select a list_id from a list of available todo lists when creating a todo.
+
+Referential Integrity:
+If your application allows deletion of todo lists, ensure that related todos are handled appropriately, either by also deleting them (if you are using ON DELETE CASCADE) or by preventing the deletion if todos still reference the list (to maintain referential integrity).
