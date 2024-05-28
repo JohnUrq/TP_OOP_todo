@@ -118,6 +118,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Acknowledgments
 
-- Thanks to [you](https://github.com/yourusername) for assistance and tutelage in creating this awesome project!
+- Thanks to [you](https://tomparson.com/)] for assistance and tutelage in creating this awesome project!
 - Hat tip to anyone whose code was used.
 
