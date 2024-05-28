@@ -18,16 +18,13 @@ class TodoListAPI {
     }
     fetch(url_root + url, options)
       .then(function (response) {
-        console.log(response);
         return response.json();
       })
       .then(callback);
   }
-  todoIndex(list_id) {
+  todoIndex(list_id, callback) {
     console.log("Getting todo index");
-    this.request("/todos/index/" + list_id, function (data) {
-      console.log(data);
-    });
+    this.request("/todos/index/" + list_id, callback);
   }
   todoGet(id) {
     console.log("Getting todo");
@@ -35,21 +32,13 @@ class TodoListAPI {
       console.log(data);
     });
   }
-  todoDelete(id) {
+  todoDelete(id, callback) {
     console.log("Deleting todo");
-    this.request("/todos/delete/" + id, function (data) {
-      console.log(data);
-    });
+    this.request("/todos/delete/" + id, callback);
   }
-  todoCreate(input) {
+  todoCreate(input, callback) {
     console.log("Creating todo");
-    this.request(
-      "/todos/create/",
-      function (data) {
-        console.log(data);
-      },
-      input
-    );
+    this.request("/todos/create/", callback, input);
   }
   todoUpdate(id, input) {
     console.log("Updating todo");
@@ -109,12 +98,40 @@ class AppClass {
       .addEventListener("click", function () {
         delete_todo_list(this);
       });
+    var app_class = this;
+    API.todoIndex(todo_list.id, function (todos) {
+      console.log(todos);
+      todos.forEach(function (todo) {
+        console.log(todo);
+        app_class.add_todo_to_interface(todo);
+      });
+    });
+    element
+      .querySelector(".new-to-do-box")
+      .addEventListener("keypress", function (event) {
+        console.log(event);
+
+        if (event.key === "Enter") {
+          API.todoCreate(
+            {
+              title: this.value,
+              list_id: todo_list.id,
+              complete: 0,
+            },
+            function (todo) {
+              App.add_todo_to_interface(todo);
+            }
+          );
+          this.style.display = "none";
+        }
+      });
     todo_lists_container.append(element);
   }
   add_todo_to_interface(todo) {
     var element = template_todo.cloneNode(true);
+    console.log(todo);
     var todo_container = document.querySelector(
-      ".todo-list[data-id=35] .list-items"
+      ".todo-list[data-id='" + todo.list_id + "'] [name='list-items']"
     );
     element.querySelector("div.list-item-text").innerHTML = todo.title;
     element.querySelector(".list-item").setAttribute("data-id", todo.id);
@@ -166,5 +183,9 @@ function create_todo(event) {
 create_todo_list_btn.addEventListener("click", create_todo_list);
 App.load();
 document.querySelectorAll(".new-to-do-box").forEach(function (element) {
-  element.addEventListener("keypress", create_todo);
+  console.log("create_todo_list_btn running");
+  console.log(element);
+  element.addEventListener("keypress", function (event) {
+    console.log(event);
+  });
 });

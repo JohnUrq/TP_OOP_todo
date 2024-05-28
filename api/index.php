@@ -42,7 +42,7 @@ switch ($url_parts[0]) {
                 $properties = ['title', 'list_id', 'date', 'complete'];
                 $todo->hydrate($properties, $_POST);
                 $todo->create();
-                echo '{"result": "success"}';
+                echo $todo->json();
 
                 break;
 

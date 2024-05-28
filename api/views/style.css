@@ -88,3 +88,7 @@ input.default-checkbox {
   max-width: 100%;
   min-width: 300px;
 }
+
+#templates {
+  display: none;
+}
