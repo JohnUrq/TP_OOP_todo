@@ -41,7 +41,7 @@ Before you begin, ensure you have met the following requirements:
 1. **Clone the repository:**
 
     ```sh
-    git clone https://github.com/yourusername/todo-list-app.git
+    git clone https://github.com/JohnUrq/TP_OOP_todo.git
     cd todo-list-app
     ```
 
