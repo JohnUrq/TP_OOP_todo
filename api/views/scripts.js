@@ -122,7 +122,7 @@ class AppClass {
               App.add_todo_to_interface(todo);
             }
           );
-          this.style.display = "none";
+          this.value = "";
         }
       });
     todo_lists_container.append(element);
