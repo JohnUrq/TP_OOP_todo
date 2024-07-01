@@ -67,16 +67,11 @@ input.default-checkbox {
   color: white;
   font-weight: bold;
   padding: 20px;
-  display: flex;
+  display: block;
   justify-content: center;
-  /* could change the next css to one line? */
   border-radius: 10px;
-  /* border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px; */
-  margin-left: 10px;
-  margin-right: 10px;
+  width: calc(100% - 20px); /* Adjust width considering margins */
+  margin: 0 10px; /* Combine left and right margins into one line */
 }
 
 .list-item .fa-trash,
@@ -84,11 +79,30 @@ input.default-checkbox {
   color: dimgray;
 }
 .container {
-  width: 385px;
-  max-width: 100%;
-  min-width: 300px;
+  /* width: 385px; */
+  width: 100%;
+  /*min-width: 300px; */
 }
 
 #templates {
   display: none;
 }
+
+/* /* .submit-button {
+this was the original.
+  background-color: dimgrey;
+  color: white;
+  font-weight: bold;
+  padding: 20px;
+  display: block;
+  justify-content: center;
+  /* could change the next css to one line? 
+  border-radius: 10px;
+  width: 100%;
+  /* border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px; 
+  margin-left: 10px;
+  margin-right: 10px;
+}  */

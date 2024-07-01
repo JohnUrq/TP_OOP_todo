@@ -40,16 +40,11 @@ class TodoListAPI {
     console.log("Creating todo");
     this.request("/todos/create/", callback, input);
   }
-  todoUpdate(id, input) {
+  todoUpdate(id, input, callback) {
     console.log("Updating todo");
-    this.request(
-      "/todos/update/" + id,
-      function (data) {
-        console.log(data);
-      },
-      input
-    );
+    this.request("/todos/update/" + id, callback, input);
   }
+
   todoListIndex(callback) {
     console.log("Getting todo list index!");
     this.request("/todo-lists/index/", callback);
@@ -100,9 +95,7 @@ class AppClass {
       });
     var app_class = this;
     API.todoIndex(todo_list.id, function (todos) {
-      console.log(todos);
       todos.forEach(function (todo) {
-        console.log(todo);
         app_class.add_todo_to_interface(todo);
       });
     });
@@ -129,18 +122,41 @@ class AppClass {
   }
   add_todo_to_interface(todo) {
     var element = template_todo.cloneNode(true);
-    console.log(todo);
+
     var todo_container = document.querySelector(
       ".todo-list[data-id='" + todo.list_id + "'] [name='list-items']"
     );
-    element.querySelector("div.list-item-text").innerHTML = todo.title;
+    var todo_title = this.format_todo_title(todo.title);
+    element.querySelector("div.list-item-text").innerHTML = todo_title;
     element.querySelector(".list-item").setAttribute("data-id", todo.id);
     element
       .querySelector("div[name=delete]")
       .addEventListener("click", function () {
         delete_todo(this);
       });
+
+    element
+      .querySelector(".default-checkbox")
+      .addEventListener("change", function () {
+        complete_todo(this);
+        console.log("completed");
+      });
+
+    element.querySelector(".default-checkbox").disabled = todo.complete == "1";
+    element.querySelector(".default-checkbox").checked = todo.complete == "1";
+
     todo_container.append(element);
+  }
+  format_todo_title(todo_title) {
+    if (
+      todo_title.match(
+        /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g
+      )
+    ) {
+      todo_title = `<a href="${todo_title}" target="_blank">${todo_title}</a>`;
+      // <a href="https://github.com/" target="_blank">https://github.com/</a>
+    }
+    return todo_title;
   }
 }
 
@@ -174,9 +190,17 @@ function delete_todo(element) {
 }
 
 function create_todo(event) {
-  console.log(event);
+  // console.log(event);
   API.todoCreate({ title: title }, function (todo) {
     App.add_todo_to_interface(todo);
+  });
+}
+
+function complete_todo(element) {
+  var todo = element.closest(".list-item");
+  console.log(todo);
+  API.todoUpdate(todo.getAttribute("data-id"), { complete: 1 }, function () {
+    element.disabled = true;
   });
 }
 
