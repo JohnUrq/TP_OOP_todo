@@ -1,13 +1,12 @@
 <?php
 
-$dsn = 'mysql:host=' . $config['db_host'] . ';dbname=' . $config['db_database'];
+$dsn = 'mysql:host='.$config['db_host'].';dbname='.$config['db_database'];
 $pdo = new PDO($dsn, $config['db_user'], $config['db_pass']);
 $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
-
 // create query function as a helper fn to find records and things like that.
-function query($sql, $params= []){
-
+function query($sql, $params = [])
+{
     global $pdo;
     // debug($sql);
     // debug($params);
@@ -18,34 +17,36 @@ function query($sql, $params= []){
     // ['name'=> $name, 'email' => $email, 'status' => $status]
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);
-// use strtok to get first word of query eg insert or select or update
-   $query_type = strtok($sql, " ");
+    // use strtok to get first word of query eg insert or select or update
+    $query_type = strtok($sql, ' ');
+
     // debug($stmt);
-   switch($query_type) {
+    switch ($query_type) {
+        case 'INSERT':
+            return $pdo->lastInsertId();
 
-    case "INSERT":
-        return $pdo->lastInsertId();
-        break;
+            break;
 
-    case "SELECT":
-        return $stmt->fetchAll();
-        break;   
+        case 'SELECT':
+            return $stmt->fetchAll();
 
-    case "UPDATE":
-    case "DELETE":
-        return true;
-        break; 
-   }
+            break;
 
-    return $pdo;
-    
-}
+        case 'UPDATE':
+        case 'DELETE':
+            return true;
 
-    function debug($data){
-        echo "<pre>";
-        var_dump($data);
-        echo "</pre>";
-        die('Debug function complete.');
+            break;
     }
 
+    return $pdo;
+}
 
+function debug($data)
+{
+    echo '<pre>';
+    var_dump($data);
+    echo '</pre>';
+
+    exit('Debug function complete.');
+}

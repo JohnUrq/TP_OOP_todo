@@ -3,7 +3,12 @@
 // config file $config creates a variable
 //
 // Include the configuration file
-$config = include 'config.php';
+
+if ('localhost:8888' == $_SERVER['HTTP_HOST']) {
+    $config = include 'config-local.php';
+} else {
+    $config = include 'config-production.php';
+}
 
 // Include the setup file
 include 'setup.php';
@@ -35,5 +40,5 @@ spl_autoload_register(function ($class_name) {
 });
 
 // Now you can use the classes without explicitly including them
-// For example, if you have a TodoList class in models/TodoList.php, you can just instantiate it:
+
 // $todoList = new TodoList();
