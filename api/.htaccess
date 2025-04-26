@@ -2,3 +2,10 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?path=$1 [NC,L,QSA]
+
+
+# Enable error logging
+php_flag log_errors on
+
+# Specify the error log file path
+php_value error_log error_log.log

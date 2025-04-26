@@ -1,10 +1,19 @@
 <?php
 
+// Enable error reporting (uncomment during development)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Log errors to a specific file
+ini_set('log_errors', 'On');
+ini_set('error_log', '/path/to/your/project/error_log.log');
+
 // config file $config creates a variable
 //
-// Include the configuration file
+// Include the configuration file_exists
 
-if ('localhost:8888' == $_SERVER['HTTP_HOST']) {
+if ('todos.john-urquhart.co.uk' !== $_SERVER['SERVER_NAME']) {
     $config = include 'config-local.php';
 } else {
     $config = include 'config-production.php';

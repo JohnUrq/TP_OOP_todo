@@ -1,0 +1,3 @@
+[25-Jul-2024 08:20:49 UTC] PHP Warning:  Undefined variable $undefined_variable in /Applications/MAMP/htdocs/Tom Lessons/TP_OOP/todo list/TP_OOP_todo/api/index.php on line 11
+[25-Jul-2024 08:20:53 UTC] PHP Warning:  Undefined variable $undefined_variable in /Applications/MAMP/htdocs/Tom Lessons/TP_OOP/todo list/TP_OOP_todo/api/index.php on line 11
+[25-Jul-2024 08:39:16 UTC] PHP Warning:  Undefined variable $undefined_variable in /Applications/MAMP/htdocs/Tom Lessons/TP_OOP/todo list/TP_OOP_todo/api/index.php on line 11

@@ -1,0 +1,25 @@
+button {
+  padding: 8px 16px; /* Adjust padding as needed */
+  border: none; /* Remove default border */
+  background-color: #007bff; /* Example blue background */
+  color: white; /* Text color */
+  cursor: pointer; /* Cursor changes to pointer when hovering over the button */
+  border-radius: 5px; /* Rounded corners */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+div a {
+  display: block; /* Makes each link element occupy a full line */
+  margin-bottom: 10px; /* Optional: adds space between the buttons */
+}
+.button-container {
+  padding-left: -70px; /* Adjust this value to increase/decrease left indent */
+}
+
+.button-container a {
+  display: block; /* Makes each link take a full line */
+  margin-bottom: 10px; /* Space between buttons */
+}

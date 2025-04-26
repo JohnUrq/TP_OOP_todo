@@ -1,6 +1,6 @@
 <?php
 
-echo 'running test.php';
+echo 'running test.php  <br>';
 
 include 'autoload.php';
 
@@ -24,7 +24,7 @@ try {
 // Test the connection and query function
 try {
     // Example test query (modify according to your database schema)
-    $stmt = $pdo->query('SELECT * FROM todos LIMIT 1');
+    $stmt = $pdo->query('SELECT * FROM todo_lists LIMIT 1');
     $results = $stmt->fetchAll();
 
     if ($results) {

@@ -15,6 +15,7 @@
     <div class="container">
       <div id="header">
         <div>My To Do App</div>
+        
         <div><i class="fa-solid fa-bars"></i></div>
       </div>
     
@@ -54,7 +55,7 @@
     document.querySelector(".new-to-do-box").addEventListener("keypress", function(e) {
       if(e.key == "Enter") {
         console.log("Enter pressed")
-        fetch("http://localhost:8888/Tom%20Lessons/TP_OOP/todo%20list/api/todos/create?title=" + this.value + "&list_id=20")
+        fetch("../api/todos/create?title=" + this.value + "&list_id=20")
        
       }
     })

@@ -1,5 +1,16 @@
 <?php
 
+// Report all PHP errors
+error_reporting(E_ALL);
+
+// Log errors to a specific file
+ini_set('log_errors', 'On');
+ini_set('error_log', 'error_log.log');
+
+// Trigger an error (undefined variable) to test logging
+// echo $undefined_variable;
+
+// debug(query('select * from todos'));
 // autoload file to inc other files required
 
 include 'autoload.php';
@@ -108,6 +119,11 @@ switch ($url_parts[0]) {
 
                 break;
         }
+
+        break;
+
+    default:
+        exit('No matching URL found!');
 
         break;
 }

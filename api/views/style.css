@@ -1,6 +1,4 @@
 #header {
-  background-color: dimgrey;
-  color: white;
   font-weight: bold;
   padding: 10px;
   display: flex;
@@ -19,8 +17,6 @@ body {
 }
 
 .list-title {
-  background-color: rgb(171, 169, 169);
-  color: black;
   font-weight: bold;
   padding: 10px;
   display: flex;
@@ -28,8 +24,6 @@ body {
 }
 
 .list-item {
-  background-color: white;
-  color: black;
   font-weight: bold;
   padding: 10px;
   display: flex;
@@ -45,7 +39,6 @@ body {
 
 .input-box {
   border-width: 1px;
-  border-color: gray;
   border-radius: 3px;
   display: block;
   width: 100%;
@@ -65,8 +58,6 @@ input.default-checkbox {
 }
 
 .submit-button {
-  background-color: dimgrey;
-  color: white;
   font-weight: bold;
   padding: 20px;
   display: block;
@@ -76,10 +67,7 @@ input.default-checkbox {
   margin: 0 10px; /* Combine left and right margins into one line */
 }
 
-.list-item .fa-trash,
-.list-title .fa-trash {
-  color: dimgray;
-}
+
 .container {
   /* width: 385px; */
   width: 100%;
@@ -109,3 +97,78 @@ this was the original.
   margin-left: 10px;
   margin-right: 10px;
 }  */
+button {
+  padding: 8px 16px; /* Adjust padding as needed */
+  border: none; /* Remove default border */
+  cursor: pointer; /* Cursor changes to pointer when hovering over the button */
+  border-radius: 5px; /* Rounded corners */
+}
+
+
+
+div a {
+  display: block; /* Makes each link element occupy a full line */
+  margin-bottom: 10px; /* Optional: adds space between the buttons */
+}
+.button-container {
+  padding-left: -70px; /* Adjust this value to increase/decrease left indent */
+}
+
+.button-container a {
+  display: block; /* Makes each link take a full line */
+  margin-bottom: 10px; /* Space between buttons */
+}
+
+/* Colour schemes */
+#header {
+  background-color: dimgrey;
+  color: white;
+}
+
+.list-title {
+  background-color: rgb(171, 169, 169);
+}
+
+.input-box {
+  border-color: gray;
+}
+
+.submit-button {
+  background-color: dimgrey;
+  color: white;
+}
+
+.list-item .fa-trash,
+.list-title .fa-trash {
+  color: dimgray;
+}
+    
+@media (prefers-color-scheme:dark){
+  body{
+    background-color: #01BAEF;
+    color: #ffffff;
+
+  }
+  .list-title {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+  #header {
+    background-color: rgba(255,255,255, 0.3);
+  }
+
+  .input-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: gray;
+  }
+
+  .submit-button {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
+  }
+
+  .list-item .fa-trash,
+  .list-title .fa-trash {
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
+  

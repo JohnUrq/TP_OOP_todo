@@ -2,8 +2,13 @@ console.log("js loaded");
 
 class TodoListAPI {
   request(url, callback, post_data) {
-    var url_root =
-      "http://localhost:8888/Tom%20Lessons/TP_OOP/todo%20list/TP_OOP_todo/api";
+    if (window.location.host !== "todos.john-urquhart.co.uk") {
+      var url_root =
+        "http://localhost:8888/Tom%20Lessons/TP_OOP/todo%20list/TP_OOP_todo/api";
+    } else {
+      var url_root = "https://todos.john-urquhart.co.uk/api";
+    }
+
     var options;
     if (typeof post_data === "undefined") {
       options = { method: "GET" };
@@ -18,9 +23,38 @@ class TodoListAPI {
     }
     fetch(url_root + url, options)
       .then(function (response) {
-        return response.json();
+        // Check if the response is valid JSON
+        if (!response.ok) {
+          throw new Error(
+            "Network response was not ok: " + response.statusText
+          );
+        }
+        return response.text(); // Convert the response to text first
       })
-      .then(callback);
+      .then(function (text) {
+        // Log the raw text response for debugging
+        console.log("Raw response:", text);
+
+        // Attempt to parse the text as JSON
+        try {
+          return JSON.parse(text);
+        } catch (error) {
+          throw new Error("Failed to parse JSON: " + error.message);
+        }
+      })
+      .then(callback)
+      .catch(function (error) {
+        // Log any errors that occur during the fetch or parsing
+        console.log(url_root, url);
+        console.error("Fetch error:", error);
+      });
+
+    // fetch(url_root + url, options)
+    //   .then(function (response) {
+    //     console.log(response.json);
+    //     return response.json();
+    //   })
+    //   .then(callback);
   }
   todoIndex(list_id, callback) {
     console.log("Getting todo index");
@@ -51,6 +85,7 @@ class TodoListAPI {
   }
   todoListGet(id) {
     console.log("Getting todo list!");
+    console.log(id);
     this.request("/todo-lists/get/" + id, function (data) {
       console.log(data);
     });
@@ -61,6 +96,7 @@ class TodoListAPI {
   }
   todoListCreate(input, callback) {
     console.log("Creating todo list!");
+    console.log(input);
     this.request("/todo-lists/create/", callback, input);
   }
   todoListUpdate(id, input) {

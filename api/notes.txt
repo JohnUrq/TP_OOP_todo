@@ -73,3 +73,4 @@ Trash cans should be lighter colour grey.
 /Applications/MAMP/htdocs/Tom Lessons/TP_OOP/todo list/frontend/index.html
 
 
+Is there a means of altering the HTML links so that if I upload to Hostgator the links will still work. or do I do it manually?
